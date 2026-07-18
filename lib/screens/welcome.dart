@@ -136,10 +136,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ? const HomeScreen(key: ValueKey('home_screen'))
               : _currentController != null &&
                     _currentController!.value.isInitialized
-              ? AspectRatio(
-                  key: ValueKey<int>(_currentIndex),
-                  aspectRatio: _currentController!.value.aspectRatio,
-                  child: VideoPlayer(_currentController!),
+              ? SizedBox.expand(
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                      width: _currentController?.value.size.width,
+                      height: _currentController?.value.size.height,
+                      child: VideoPlayer(_currentController!),
+                    ),
+                  ),
                 )
               : const CircularProgressIndicator(key: ValueKey('loading')),
         ),

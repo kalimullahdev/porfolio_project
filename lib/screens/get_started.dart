@@ -22,13 +22,27 @@ class GetStartedScreen extends StatelessWidget {
         child: Center(
           child: InkWell(
             onTap: startSequence,
-            child: Text(
-              'Welcome Home',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.2,
+            child: Container(
+              height: 100,
+              width: 340,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                border: BoxBorder.all(
+                  color: Colors.white,
+                  width: 1,
+                  style: BorderStyle.solid,
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  "Let's get started",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2,
+                  ),
+                ),
               ),
             ),
           ),
