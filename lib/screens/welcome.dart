@@ -10,11 +10,8 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  // Replace these with the paths to your local videos
   final List<String> videoPaths = [
-    'assets/welcome1.mp4',
-    'assets/welcome2.mp4',
-    'assets/welcome3.mp4',
+    'assets/welcome.webm',
   ];
 
   VideoPlayerController? _currentController;
@@ -186,7 +183,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'All videos have finished playing.',
+              'Video has finished playing.',
               style: TextStyle(color: Colors.white70, fontSize: 16),
             ),
           ],

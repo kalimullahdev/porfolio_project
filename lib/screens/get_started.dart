@@ -2,116 +2,91 @@ import 'package:flutter/material.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key, required this.startSequence});
-
   final Future<void> Function() startSequence;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        key: key,
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blueGrey.shade900, Colors.black],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+      backgroundColor: Colors.white,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Heading
+                Text(
+                  "Hi, I'm Kalim.",
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    letterSpacing: -0.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 24),
+
+                // Introduction
+                Text(
+                  "I'm working on FlutterFlow projects from last 2+ years, until now.",
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontSize: 18,
+                    color: Colors.black,
+                    letterSpacing: 0.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+
+                // Description
+                Text(
+                  "I develop production-ready FlutterFlow applications based on client vision.",
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontSize: 16,
+                    color: Colors.black87,
+                    letterSpacing: 0.3,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 48),
+
+                // Continue Button
+                SizedBox(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      startSequence();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 48,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      elevation: 2,
+                    ),
+                    child: Text(
+                      'Continue',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        child: Center(
-          child: _buildGlassButton(
-            "Let's get started",
-            1,
-            startSequence,
-            isPrimary: true,
-          ),
-          // InkWell(
-          //   onTap: startSequence,
-          //   child: Container(
-          //     height: 100,
-          //     width: 340,
-          //     decoration: BoxDecoration(
-          //       borderRadius: BorderRadius.all(Radius.circular(20)),
-          //       border: BoxBorder.all(
-          //         color: Colors.white,
-          //         width: 1,
-          //         style: BorderStyle.solid,
-          //       ),
-          //     ),
-          //     child: Center(
-          //       child: Text(
-          //         "Let's get started",
-          //         style: TextStyle(
-          //           color: Colors.white,
-          //           fontSize: 36,
-          //           fontWeight: FontWeight.bold,
-          //           letterSpacing: 1.2,
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ),
       ),
     );
   }
-}
-
-Widget _buildGlassButton(
-  String text,
-  double glow,
-  VoidCallback onTap, {
-  bool isPrimary = false,
-}) {
-  return MouseRegion(
-    cursor: SystemMouseCursors.click,
-    child: InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          gradient: isPrimary
-              ? LinearGradient(
-                  colors: [
-                    Color.lerp(
-                      Colors.white.withValues(alpha: 0.12),
-                      const Color(0xFFFFD48A).withValues(alpha: 0.3),
-                      glow,
-                    )!,
-                    Color.lerp(
-                      Colors.white.withValues(alpha: 0.06),
-                      const Color(0xFFFFA726).withValues(alpha: 0.15),
-                      glow,
-                    )!,
-                  ],
-                )
-              : null,
-          color: isPrimary ? null : Colors.white.withValues(alpha: 0.05),
-          border: Border.all(
-            color: isPrimary
-                ? Color.lerp(
-                    Colors.white.withValues(alpha: 0.2),
-                    const Color(0xFFFFD48A).withValues(alpha: 0.5),
-                    glow,
-                  )!
-                : Colors.white.withValues(alpha: 0.1),
-            width: 1.5,
-          ),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: isPrimary
-                ? Color.lerp(Colors.white70, const Color(0xFFFFE8C0), glow)
-                : Colors.white.withValues(alpha: 0.5),
-            fontWeight: FontWeight.w600,
-            fontSize: 14,
-            letterSpacing: 1,
-          ),
-        ),
-      ),
-    ),
-  );
 }
